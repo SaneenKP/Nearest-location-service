@@ -1,0 +1,19 @@
+{
+  "name": "nearest-location-service",
+  "version": "1.0.0",
+  "description": "A simple node microservice to return the nearest locations according to the maximum and minimum distances powered by MongoDB query.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaneenKP/Nearest-location-service.git"
+  },
+  "author": "SaneenKP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaneenKP/Nearest-location-service/issues"
+  },
+  "homepage": "https://github.com/SaneenKP/Nearest-location-service#readme"
+}
