@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/SaneenKP/Nearest-location-service/issues"
   },
-  "homepage": "https://github.com/SaneenKP/Nearest-location-service#readme"
+  "homepage": "https://github.com/SaneenKP/Nearest-location-service#readme",
+  "type": "module"
 }
