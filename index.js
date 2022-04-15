@@ -1,7 +1,9 @@
 const url = require('url')
-const request = require('./Models/requestModel.js')
 const http = require('http');
 const { StringDecoder } = require('string_decoder');
+
+//Models
+const request = require('./Models/requestModel.js')
 const coordinates = require('./Models/coordinatesModel.js')
 
 var decoder = new StringDecoder('utf-8')
@@ -18,7 +20,7 @@ var server = http.createServer((req , res) => {
     req.on('data' , (data) => {
         buffer += decoder.write(data)
     })
-    
+
     req.on('end' , () => {
 
         if(buffer != ""){
