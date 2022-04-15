@@ -1,5 +1,6 @@
-export var coordinates = (latitude , longitude) => {
+var coordinates = (data) => {
 
+    const {latitude , longitude} = data;
 
     if(latitude < -90 || latitude > 90){
         throw new Error('Invalid latitude value !')
@@ -14,3 +15,5 @@ export var coordinates = (latitude , longitude) => {
     }
 
 }
+
+module.exports = coordinates
