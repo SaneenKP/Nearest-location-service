@@ -2,6 +2,7 @@ const url = require('url')
 const request = require('./Models/requestModel.js')
 const http = require('http');
 const { StringDecoder } = require('string_decoder');
+const coordinates = require('./Models/coordinatesModel.js')
 
 var decoder = new StringDecoder('utf-8')
 
@@ -17,12 +18,20 @@ var server = http.createServer((req , res) => {
     req.on('data' , (data) => {
         buffer += decoder.write(data)
     })
+    
     req.on('end' , () => {
 
-        if(buffer != "")
-            res.end(buffer)
-        else
-            res.end("No response")
+        if(buffer != ""){
+
+            try{
+                const {latitude , longitude} = coordinates(JSON.parse(buffer))
+            }catch(e){
+                res.end(e)
+            }
+        }
+        else{
+            res.end("Opps No response")
+        }
     })
 
 
