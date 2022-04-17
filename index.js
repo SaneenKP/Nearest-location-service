@@ -8,7 +8,7 @@ const request = require('./Models/requestModel.js')
 const coordinates = require('./Models/coordinatesModel.js')
 
 //Database
-const database = require('./DB/driver.js')
+const databaseConnection = require('./DB/connection.js')
 
 //variables
 const decoder = new StringDecoder('utf-8')
@@ -22,19 +22,20 @@ var server = http.createServer((req , res) => {
         console.log(e);
     }
 
-    req.on('data' , (data) => {
-        buffer += decoder.write(data)
-    })
+    req.on('data' , (data) => {buffer += decoder.write(data)})
 
-    req.on('end' , () => {
+    req.on('end' , async () => {
 
         if(buffer != ""){
 
             try{
                 const {latitude , longitude} = coordinates(JSON.parse(buffer))
+                await databaseConnection();
                 res.end("Done")
+
             }catch(e){
-                res.end(e)
+                res.write("Error : " + e)
+                res.end()
             }
         }
         else{
