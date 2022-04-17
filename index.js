@@ -1,3 +1,4 @@
+//Utilities
 const url = require('url')
 const http = require('http');
 const { StringDecoder } = require('string_decoder');
@@ -6,7 +7,11 @@ const { StringDecoder } = require('string_decoder');
 const request = require('./Models/requestModel.js')
 const coordinates = require('./Models/coordinatesModel.js')
 
-var decoder = new StringDecoder('utf-8')
+//Database
+const database = require('./DB/driver.js')
+
+//variables
+const decoder = new StringDecoder('utf-8')
 
 var server = http.createServer((req , res) => {
 
@@ -27,6 +32,7 @@ var server = http.createServer((req , res) => {
 
             try{
                 const {latitude , longitude} = coordinates(JSON.parse(buffer))
+                res.end("Done")
             }catch(e){
                 res.end(e)
             }
