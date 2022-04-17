@@ -14,4 +14,4 @@ const getNearestCoordinatesQuery = (longitude , latitude , max , min) => {
     }
 }
 
-module.exports = getNearestCoordinatesQuery()
+module.exports = getNearestCoordinatesQuery
