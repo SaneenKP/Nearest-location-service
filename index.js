@@ -16,14 +16,19 @@ const decoder = new StringDecoder('utf-8')
 var server = http.createServer((req , res) => {
 
     var buffer = "";
+	
+    //getting Request constrains.
     try{
         var {Url , path , method} = request(req , url)
     }catch(e){
         console.log(e);
     }
 
+    //Buffering chunks of data.
     req.on('data' , (data) => {buffer += decoder.write(data)})
 
+
+    //Executing DB and other functions on end of response.
     req.on('end' , async () => {
 
         if(buffer != ""){
